@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+		
+		<meta name="description" content="Jump, run and parkour your way round shooting your way to victory! Blockshot is a cool First Person Shooter game that you can easily join and play with your friends. Simply select a gun, choose map and battle against your friends in the ultimate fight to gain victory!">
+  	<meta name="keywords" content="FPS, first person shooter, online, multiplayer, first, person, shooter, game, fun, friends, join, create">
+  <meta name="author" property="og:author" content="GameDev46">
+
+	<meta name="theme-color" content="#0F0F0F">
+
+	<meta property="og:image" content="/images/logo.png">
+	<meta property="og:site_name" content="BlockShot">
+	<meta itemprop="name" content="BlockShot">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@GameDev46">
+	<meta name="twitter:title" content="Battle your friends for total victory!">
+	<meta name="twitter:description" content="Jump, run and parkour your way round shooting your way to victory! Blockshot is a cool First Person Shooter game that you can easily join and play with your friends. Simply select a gun, choose map and battle against your friends in the ultimae fight to gain victory!">
+	<meta name="twitter:image" content="/images/logo.png">
+		
+    <title>BlockShot V7.5</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+		<link rel="icon" href="/images/logo.png" type="image/png" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+		
+		<!-- V7.5-->
+  </head>
+  <body>
+
+		<script src="https://unpkg.com/feather-icons"></script>
+		
+		<div id="onJoinedRoomDisplay" class="onJoinedRoomDisplay">
+			<h3 class="roomNameDisplay" id="roomNameDisplay">Room Name: [Insert Room Name]</h3>
+
+			<div id="player-score-display">
+				<h3>Scores:</h3>
+				<p>Username: 0</p>
+			</div>
+
+			<div class="playerStatsDisplay">
+				<h3 id="gunNameDisplay">Pistol</h3>
+				<h4 id="gunAmmoDisplay">30 | 30</h4>
+			</div>
+
+			<div class="healthBarDisplay">
+				<h3 id="healthBarDisplay-counter">100 / 100</h3>
+				<progress id="healthBarDisplay" max="100" value="100">
+			</div>
+
+			<div class="killNotification" id="killNotification">
+				<h1>+1</h1>
+				<p id="PlayerKillMessage">New Kill</p>
+			</div>
+
+			<div>
+				<h4 id="FPS-display" class="FPS-display">FPS: 60</h4>
+				<h4 id="PING-display" class="PING-display"><i data-feather="wifi"></i> 200ms</h4>
+			</div>
+
+			<h5 class="crossHair" id="playerCrosshair">+</h5>
+		</div>
+		
+		<div class="menu" id="menu">
+			<div class="top-navigation-bar">
+				<button><i data-feather="home"></i></button>
+				<button id="settings-menu-move"><i data-feather="sliders"></i></button>
+				<button><i data-feather="info"></i></button>
+			</div>
+			<br>
+			<br>
+			<br>
+			<h2>BlockShot</h2>
+			<br>
+			<label for="player-name">Username:</label>
+			<input type="text" value="Player" placeholder="Username" id="player-name">
+			<br>
+			<label for="room-name">Room name:</label>
+			<input type="text" autocomplete="off" value="" placeholder="Room Name" id="room-name">
+			
+			<div class="room-list" id="room-list">
+
+			</div>
+			
+			<br>
+			<label for="gun-select">Select Gun:</label>
+			<div id="gun-select" class="select-gun">
+			  <button value="0" class="gun-select-button">Pistol</button>
+				<button value="1" class="gun-select-button">Sniper</button>
+				<button value="2" class="gun-select-button">Machine Gun</button>
+				<button value="3" class="gun-select-button">Assault Rifle</button>
+				<button value="4" class="gun-select-button">Bazooka</button>
+			</div>
+			<br>
+			<label for="map-select">Choose Map:</label>
+			<button class="select-map-button" id="selected-map-display">Click To Select Map</button>
+			<div class="select-map-div">
+				<div>
+					<div></div>
+					<li>Cargo Depot</li>
+					<button id="map-1">Equip</button>
+				</div>
+				<div>
+					<div></div>
+					<li>Building Site</li>
+					<button id="map-2">Equip</button>
+				</div>
+				<div>
+					<div></div>
+					<li>Cargo Dump</li>
+					<button id="map-3">Equip</button>
+				</div>
+				<div>
+					<div></div>
+					<li>Risky Road</li>
+					<button id="map-4">Equip</button>
+				</div>
+				<div>
+					<div></div>
+					<li>Sandy City</li>
+					<button id="map-5">Equip</button>
+				</div>
+				<div>
+					<div></div>
+					<li>Gucci Garage</li>
+					<button id="map-6">Equip</button>
+				</div>
+				<div>
+					<div></div>
+					<li>Snow Station</li>
+					<button id="map-7">Equip</button>
+				</div>
+				<div>
+					<div></div>
+					<li>Metal Maze</li>
+					<button id="map-8">Equip</button>
+				</div>
+			</div>
+			<br>
+			<button id="begin-game">Join Game</button>
+
+			<div class="controls-display">
+				<ul>
+					<li>WASD to move</li>
+					<li>R to reload</li>
+					<li>E or SCROLLWHEEL CLICK to switch weapons</li>
+					<li>Left click to shoot</li>
+					<li>Right click to aim</li>
+				</ul>
+			</div>
+ 
+			<div class="menu-sideBar" id="menu-sidebar">
+				<button><img src="/images/logo.png" alt="Logo image"></button>
+				<hr>
+				<button onclick="toggleFullscreen()"><i data-feather="maximize"></i></button>
+				<hr>
+				<button><i data-feather="help-circle"></i></button>
+				<hr>
+				<button onclick="copyText()"><i data-feather="clipboard"></i></button>
+				<a href="https://twitter.com/@GameDev46" target="_blank"><button><i data-feather="twitter"></i></button></a>
+				<a href="https://instagram.com/Oliver_Pearce47" target="_blank"><button><i data-feather="instagram"></i></button></a>
+			</div>
+		</div>
+
+		<div id="settings-menu" class="menu">
+			<br>
+			<br>
+			<h2>Settings</h2>
+			<div class="top-navigation-bar">
+				<button id="main-menu-move"><i data-feather="home"></i></button>
+				<button><i data-feather="sliders"></i></button>
+				<button><i data-feather="info"></i></button>
+			</div>
+			<br>
+			<ul class="graphics-options">
+					<li>
+						<input type="checkbox" id="pixel-toggle" checked>
+						<span>Hard Pixels</span>
+					</li>
+					<li>
+						<input type="checkbox" id="shadow-quality-toggle" checked>
+						<span>Soft Shadows</span>
+					</li>
+					<li>
+						<input type="checkbox" id="antialias-toggle" checked>
+						<span>Antialiasing</span>
+					</li>
+				</ul>
+		</div>
+
+		<div id="respawnScreen" class="respawnScreen">
+			<h1>You Died</h1>
+			<br>
+			<h3 id="respawnScreenMessage">[Insert message here]</h3>
+			<br>
+			<p>Respawning in 5 seconds...</p>
+
+			<p>Change Weapon:</p>
+			<div id="gun-select-death" class="select-gun">
+			  <button value="0" class="gun-select-button-death">Pistol</button>
+				<button value="1" class="gun-select-button-death">Sniper</button>
+				<button value="2" class="gun-select-button-death">Machine Gun</button>
+				<button value="3" class="gun-select-button-death">Assault Rifle</button>
+				<button value="4" class="gun-select-button-death">Bazooka</button>
+			</div>
+		</div>
+
+		<div id="mobile-controller">
+			<div class="mobile-controller">
+				<button id="up-arrow-mobile"><i data-feather="chevron-up"></i></button>
+				<div>
+					<button id="left-arrow-mobile"><i data-feather="chevron-left"></i></button>
+					<button id="right-arrow-mobile"><i data-feather="chevron-right"></i></button>
+				</div>
+				<button id="down-arrow-mobile"><i data-feather="chevron-down"></i></button>
+			</div>
+
+			<div class="mobile-controller-right">
+				<button id="switch-gun-mobile"><i data-feather="repeat"></i></button>
+				<button id="shoot-mobile"><i data-feather="crosshair"></i></button>
+				<button id="jump-arrow-mobile"><i data-feather="arrow-up"></i></button>
+			</div>
+		</div>
+
+		<script>
+			document.getElementById("onJoinedRoomDisplay").style.display = "none";
+			document.getElementById("mobile-controller").style.display = "none";
+
+			feather.replace();
+
+			function copyText() {
+				navigator.clipboard.writeText(window.location.href).then(res => {
+					alert('Copied URL to clipboard'); 
+				})
+			}
+
+			let fullscreen = false;
+			let menuSound = new Audio("/sounds/buttonClick.wav");
+
+			function toggleFullscreen() {
+				if (fullscreen == false) {
+					document.body.requestFullscreen();
+					fullscreen = true;
+				}
+				else {
+					document.exitFullscreen();
+					fullscreen = false;
+				}
+
+				// Play sound
+
+				menuSound.currentTime = 0;
+				menuSound.play();
+			}
+
+			let noiseButtons = document.getElementById("menu-sidebar").getElementsByTagName("button");
+
+			for (var i = 0; i < noiseButtons.length; i++) {
+				noiseButtons[i].addEventListener("click", e => {
+					menuSound.currentTime = 0;
+					menuSound.play();
+				})
+			}
+			
+		</script>
+		
+		<script src="/socket.io/socket.io.min.js"></script>
+		<script src="script.js" type="module"></script>
+
+		<script src="roomList.js" defer></script>
+		<script src="notification.js" defer></script>
+		<script src="menuTabs.js" defer></script>
+  </body>
+</html>
