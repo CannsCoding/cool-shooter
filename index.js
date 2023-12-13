@@ -1,3 +1,5 @@
+console.log("hi");
+
 const express = require('express');
 const THREE = require('three');
 const fs = require("fs");
@@ -6,7 +8,6 @@ const path = require('path');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-
 var roomCache = { "": 0 };
 var lastUpdateCache = { "": 100 }
 var playerRoomCache = {};
